@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#062a20">
+<link rel="preconnect" href="https://www.gstatic.com">
+<style>html,body{background:#04180f;margin:0}#sp{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;color:#e0b84a;font-family:system-ui,sans-serif;font-size:18px;gap:12px}#sp i{width:34px;height:34px;border:4px solid #e0b84a55;border-top-color:#e0b84a;border-radius:50%;animation:spn 1s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}</style>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>আল ইনসাফ বহুমুখী সংগঠন</title>
+<style>
+:root{--bg:#04180f;--bg2:#0a3024;--card:#0d3b2c;--gold:#e0b84a;--gold2:#b8902c;--ink:#f5efdc;--mut:#9db8ab;--line:#1d5a45;--bad:#e8806a;--ok:#7fd1a0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali","Kalpurush","SolaimanLipi",system-ui,sans-serif;font-size:16px;line-height:1.5;padding:env(safe-area-inset-top) 0 0}
+#app{max-width:640px;margin:auto;min-height:100vh;padding-bottom:108px}
+.top{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(180deg,var(--bg2),var(--bg));border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top h1{font-size:18px;margin:0;color:var(--gold);flex:1}
+.top button{background:linear-gradient(180deg,#17594a,#0a3024);border:1px solid var(--line);color:var(--mut);border-radius:20px;padding:5px 12px;font:inherit;font-size:13px;box-shadow:0 3px 0 #020b07,0 5px 8px #000a,inset 0 1px 0 #ffffff2a}.top button:active{transform:translateY(2px);box-shadow:0 1px 0 #020b07}
+.wrap{padding:16px}
+.login{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:28px;text-align:center;background:radial-gradient(circle at 50% 25%,#0f4a38,var(--bg) 70%)}
+.login svg{width:185px;height:185px;margin:0 auto 10px;overflow:visible}.top svg{width:34px;height:34px}
+.login h1{color:var(--gold);font-size:30px;margin:6px 0 2px}
+.login p{color:var(--mut);margin:0 0 26px}
+.seg{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:14px}
+.seg b{flex:1;padding:10px;border-radius:10px;font-weight:600;color:var(--mut)}
+.seg b.on{background:linear-gradient(180deg,#f7de88,#c89c30);color:#2a1d03;box-shadow:0 3px 0 #6f5210,inset 0 1px 0 #fffa}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:13px 14px;font:inherit;margin-bottom:10px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:transparent}
+label{display:block;text-align:left;font-size:13px;color:var(--mut);margin:0 0 4px 2px}
+.btn{width:100%;border:0;border-radius:16px;padding:14px;font:inherit;font-weight:800;margin-bottom:7px;color:#2a1d03;text-shadow:0 1px 0 #fff7;background:linear-gradient(180deg,#f7de88,#dcb23f 52%,#b78d27);box-shadow:0 5px 0 #6f5210,0 10px 16px #000a,inset 0 1px 0 #fffa,inset 0 -2px 0 #0002;transition:transform .08s,box-shadow .08s}
+.btn:active,.fab:active{transform:translateY(4px);box-shadow:0 1px 0 #6f5210,0 3px 6px #000a,inset 0 1px 0 #fffa}
+.btn.sm{width:auto;padding:8px 14px;font-size:14px;border-radius:11px;margin:0;box-shadow:0 3px 0 #6f5210,0 6px 10px #0008,inset 0 1px 0 #fffa}
+.btn.o{color:var(--gold);text-shadow:none;border:1px solid var(--gold2);background:linear-gradient(180deg,#17594a,#0a3024);box-shadow:0 5px 0 #020b07,0 10px 16px #000a,inset 0 1px 0 #ffffff2a}
+.btn.r{color:#ffb8a8;text-shadow:none;border:1px solid #a8503f;background:linear-gradient(180deg,#5a2a22,#34130f);box-shadow:0 5px 0 #1a0805,0 10px 16px #000a,inset 0 1px 0 #ffffff22}
+.btn.wa{color:#fff;text-shadow:0 1px 0 #0006;border:1px solid #6fe39b;background:linear-gradient(180deg,#2fd06b,#128c4a);box-shadow:0 5px 0 #06371c,0 10px 16px #000a,inset 0 1px 0 #ffffff66}.btn.sm.wa{box-shadow:0 3px 0 #06371c,0 6px 10px #0008,inset 0 1px 0 #ffffff66}
+.hero{background:linear-gradient(135deg,#17614a,#0a2f23);border:1px solid var(--gold2);border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 6px 0 #5a430c,0 14px 22px #000a,inset 0 1px 0 #ffffff2e}
+.hero small{color:var(--mut)}.hero .big{font-size:34px;font-weight:800;color:var(--gold)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat{box-shadow:0 4px 0 #031109,0 8px 12px #0006,inset 0 1px 0 #ffffff14;background:var(--card);border-radius:16px;padding:14px;border:1px solid var(--line)}
+.stat small{color:var(--mut);display:block}.stat b{font-size:20px}
+.row{box-shadow:0 3px 0 #031109,0 6px 10px #0006;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.row .m{flex:1;min-width:0}.row .m b{display:block;overflow:hidden;text-overflow:ellipsis}.row .m small{color:var(--mut)}
+.row .a{font-weight:700;color:var(--gold);white-space:nowrap}
+.bad{color:var(--bad)!important}.ok{color:var(--ok)!important}
+h2{font-size:17px;margin:18px 0 10px;color:var(--gold)}
+.bar{height:8px;background:var(--bg2);border-radius:8px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold))}
+nav{position:fixed;bottom:0;left:0;right:0;background:#031109;border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav div{display:flex;width:100%;max-width:640px;gap:6px;padding:8px 8px 10px}
+nav a{flex:1;min-width:0;text-align:center;padding:7px 2px 6px;color:var(--mut);font-size:11.5px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,#17594a,#0a3024);box-shadow:0 4px 0 #020b07,0 7px 10px #000a,inset 0 1px 0 #ffffff2a;transition:transform .08s,box-shadow .08s}nav a:active{transform:translateY(3px);box-shadow:0 1px 0 #020b07,inset 0 1px 0 #ffffff2a}
+nav a span{display:block;font-size:20px;line-height:1.2;text-shadow:0 2px 3px #000a}
+nav a.on{color:#2a1d03;font-weight:700;border-color:var(--gold);background:linear-gradient(180deg,#f7de88,#c89c30);transform:translateY(2px);box-shadow:0 2px 0 #6f5210,0 4px 8px #000a,inset 0 1px 0 #fffa}nav a.on span{text-shadow:0 1px 0 #fff7}
+.tabs{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto}
+.tabs a{padding:8px 16px;border-radius:20px;border:1px solid var(--line);color:var(--mut);white-space:nowrap}
+.tabs a.on{box-shadow:0 3px 0 #6f5210;background:linear-gradient(180deg,#f7de88,#c89c30);color:#1a1405;border-color:var(--gold);font-weight:700}
+.modal{position:fixed;inset:0;background:#000b;z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg2);width:100%;max-width:640px;border-radius:22px 22px 0 0;padding:20px;max-height:90vh;overflow:auto;border-top:2px solid var(--gold2)}
+.sheet h3{margin:0 0 14px;color:var(--gold)}
+.empty{text-align:center;color:var(--mut);padding:28px 10px;border:1px dashed var(--line);border-radius:14px}
+.fab{box-shadow:0 5px 0 #6f5210,0 10px 18px #000b,inset 0 1px 0 #fffa!important;position:fixed;right:max(16px,calc(50% - 304px));bottom:108px;width:56px;height:56px;border-radius:50%;border:0;font-size:30px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1405;box-shadow:0 6px 20px #000a;z-index:7}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1405;padding:10px 20px;border-radius:20px;font-weight:700;z-index:30}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left}th{color:var(--gold)}
+.pill{font-size:12px;padding:2px 10px;border-radius:12px;border:1px solid;white-space:nowrap}
+.amb{color:#f0c060!important}
+.row:active,.stat[data-go]:active{transform:translateY(2px)}
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.mt{border-radius:15px;padding:9px 4px 8px;text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,#17594a,#0c3528);box-shadow:0 5px 0 #031109,0 9px 12px #0008,inset 0 1px 0 #ffffff2a;transition:transform .08s,box-shadow .08s;min-width:0}
+.mt:active{transform:translateY(4px);box-shadow:0 1px 0 #031109,0 2px 4px #0008,inset 0 1px 0 #ffffff2a}
+.mt b{display:block;font-size:13.5px;line-height:1.25}.mt small{display:block;font-size:11px;color:var(--mut);line-height:1.1}
+.mt em{display:block;font-style:normal;font-size:15px;font-weight:800;margin:3px 0 1px}.mt u{display:block;text-decoration:none;font-size:11px;opacity:.95}
+.mt.paid{background:linear-gradient(180deg,#38b072,#16683f);border-color:#8fe0b0;box-shadow:0 5px 0 #08371f,0 9px 12px #0008,inset 0 1px 0 #ffffff55}
+.mt.paid small{color:#d6ffe6}
+.mt.part{background:linear-gradient(180deg,#e5b94c,#9b6f16);border-color:#f7de88;color:#251a03;box-shadow:0 5px 0 #4f3708,0 9px 12px #0008,inset 0 1px 0 #ffffff66}
+.mt.part small{color:#3e2d08}
+.mt.late{background:linear-gradient(180deg,#d9684f,#8a2e1f);border-color:#ffb8a8;box-shadow:0 5px 0 #3e130b,0 9px 12px #0008,inset 0 1px 0 #ffffff44}
+.mt.late small{color:#ffd9d0}
+.mt.now{border:2px solid var(--gold);background:linear-gradient(180deg,#2a6f58,#0f4030)}
+.mt.soon,.mt.extra{opacity:.75}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:var(--mut);margin:-4px 0 12px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.rpw{padding:14px;color:#000;background:#fff;max-width:900px;margin:auto}.rpw h2,.rpw p{color:#000}.rpw table{margin-bottom:12px}.rpw th{color:#000;background:#eee}.rpw td,.rpw th{border:1px solid #888}
+.fold{margin-bottom:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 0 #031109,0 6px 10px #0006;overflow:hidden}
+.fold summary{list-style:none;display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary .fi{font-size:22px;transition:transform .15s}
+.fold[open] summary .fi{transform:scale(1.1)}
+.fold summary .m{flex:1;min-width:0}.fold summary .m b{display:block;overflow:hidden;text-overflow:ellipsis}.fold summary .m small{color:var(--mut)}
+.fold .in{padding:0 10px 4px;border-top:1px solid var(--line);padding-top:10px}
+.fold .in .row{box-shadow:none;background:var(--bg2)}
+.top .nb{position:relative;font-size:16px;padding:4px 11px}.nbd{position:absolute;top:-7px;right:-5px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;line-height:18px;text-align:center;padding:0 4px;font-weight:700}
+@media print{body{background:#fff;color:#000}.top,nav,.fab,.noprint{display:none!important}.stat,.row,.hero{background:#fff;border:1px solid #999;color:#000}*{color:#000!important}#app{max-width:none}}
+</style>
+
+
+</head><body>
+<div id="app"><div id="sp"><i></i>আল ইনসাফ — লোড হচ্ছে...</div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+<script>
+const $=s=>document.querySelector(s),A=$('#app');
+const bn=n=>Number(n||0).toLocaleString('bn-BD'),tk=n=>'৳'+bn(n);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')},uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const KEY='alinsaf_v1';
+const waNum=p=>{let n=String(p||'').replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d)).replace(/\D/g,'');if(n.startsWith('00'))n=n.slice(2);if(n.startsWith('0'))n='88'+n;else if(n.length==10&&n[0]=='1')n='880'+n;return n};
+const waLink=(p,t)=>'https://wa.me/'+waNum(p)+(t?'?text='+encodeURIComponent(t):'');
+
+const WAB=(k)=>`<button class="btn sm wa" data-wa="${k}">💬 পাঠান</button>`;
+function waSend(key){
+  try{
+    const [t,id,ix]=key.split(':'),sig='\n— আল ইনসাফ বহুমুখী সংগঠন';let mid,txt;
+    if(t=='p'){const x=D.pays.find(y=>y.id==id);if(!x)return;mid=x.mid;const m=D.members.find(y=>y.id==mid),q=m?msum(m):null;
+      txt='আসসালামু আলাইকুম '+mname(mid)+', আপনার '+(x.month?mlabel(x.month)+' এর ':'')+'সঞ্চয় '+tk(x.amt)+' জমা নেওয়া হয়েছে ('+x.date+')।'+(q&&q.dueNow>0?' এ পর্যন্ত বকেয়া সঞ্চয় '+tk(q.dueNow)+'।':' আপনার সঞ্চয় হালনাগাদ আছে।')+' জাযাকাল্লাহ।'+sig}
+    else if(t=='l'){const l=D.loans.find(y=>y.id==id);if(!l)return;mid=l.mid;const g=(l.log||[])[+ix]||{};
+      txt='আসসালামু আলাইকুম '+mname(mid)+', আপনার '+tk(g.amt)+' কিস্তি জমা নেওয়া হয়েছে ('+g.date+')।'+(loanBal(l)>0?' বাকি ঋণ '+tk(loanBal(l))+'।':' আপনার লোন সম্পূর্ণ পরিশোধ হয়েছে, আলহামদুলিল্লাহ।')+' জাযাকাল্লাহ।'+sig}
+    else if(t=='a'){const a=D.apps.find(y=>y.id==id);if(!a)return;mid=a.mid;
+      txt='আসসালামু আলাইকুম '+mname(mid)+', আপনার '+tk(a.amt)+'-এর আবেদনটি '+(a.status=='অনুমোদিত'?'অনুমোদন করা হয়েছে।':a.status=='বাতিল'?'বাতিল করা হয়েছে।':'এখনো বিবেচনাধীন।')+sig}
+    else return;
+    const m=D.members.find(y=>y.id==mid);if(!m||!m.phone){toast('সদস্যের ফোন নম্বর পাওয়া যায়নি');return}
+    window.open(waLink(m.phone,txt),'_blank')
+  }catch(e){toast('WhatsApp খোলা যায়নি')}
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-wa]');if(!b)return;e.stopPropagation();e.preventDefault();waSend(b.dataset.wa)},true);
+let D;try{D=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+D=D||{adminPw:'admin123',admins:[{name:'সভাপতি',phone:'01XXXXXXXXX'}],members:[],pays:[],inv:[],exp:[],apps:[],loans:[]};
+D.loans=D.loans||[];D.divs=D.divs||[];D.gone=D.gone||[];
+const FB={apiKey:"AIzaSyAUMU4FCcPm3o6JpZwmPKfR3P5rpMMkzV0",authDomain:"al-insaf-e36ba.firebaseapp.com",projectId:"al-insaf-e36ba",storageBucket:"al-insaf-e36ba.firebasestorage.app",messagingSenderId:"111499337358",appId:"1:111499337358:web:3ac2e98ee2a2b7e61173df"};
+let ref=null,ready=false;
+try{firebase.initializeApp(FB);const db=firebase.firestore();try{db.enablePersistence({synchronizeTabs:true}).catch(()=>{})}catch(e){}ref=db.collection('alinsaf').doc('main')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}
+  if(ref)ref.set(JSON.parse(JSON.stringify(D))).catch(()=>toast('অনলাইনে সংরক্ষণ করা যায়নি'))};
+let S={role:null,me:null,tab:'home',sub:'pays'};
+try{const s=JSON.parse(sessionStorage.getItem('s'));if(s)S=s}catch(e){}
+const go=(o)=>{Object.assign(S,o);try{sessionStorage.setItem('s',JSON.stringify(S))}catch(e){}render()};
+function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;e.style.top=(20+document.querySelectorAll('.toast').length*52)+'px';document.body.append(e);setTimeout(()=>e.remove(),1800)}
+const LOGO=(()=>{const cx=120,cy=132,R=45,k=Math.PI/180,P=(t,d=R)=>[cx+d*Math.cos(t*k),cy+d*Math.sin(t*k)],f=n=>n.toFixed(1);
+let g='';for(let t=114;t<=230;t+=10.5){[[3,-36],[-3,36]].forEach(([o,a])=>{const[x,y]=P(t,R+o);g+=`<ellipse transform="translate(${f(x)} ${f(y)}) rotate(${f(t+a)})" cx="0" cy="3.7" rx="1.6" ry="3.7"/>`})}
+const[x2,y2]=P(240);g+=`<ellipse transform="translate(${f(x2)} ${f(y2)}) rotate(240)" cx="0" cy="4.8" rx="2.1" ry="4.8"/>`;
+const[a,b]=P(100),[c,d]=P(240);
+const st=`<g fill="#dcb344"><path d="M${f(a)} ${f(b)}A${R} ${R} 0 0 1 ${f(c)} ${f(d)}" fill="none" stroke="url(#gg)" stroke-width="1.3"/>${g}</g>`;
+const pet=(r,sc)=>`<path transform="rotate(${r}) scale(${sc})" d="M0 0C-9 -8 -9 -24 0 -34C9 -24 9 -8 0 0Z" fill="url(#gg)" stroke="#082e22" stroke-width=".9"/>`;
+const sh=`<g transform="translate(120 70)"><ellipse cx="0" cy="3" rx="24" ry="3" fill="#1d7a5c"/><ellipse cx="-15" cy="-2" rx="11" ry="4" transform="rotate(-14 -15 -2)" fill="#c79a30"/><ellipse cx="15" cy="-2" rx="11" ry="4" transform="rotate(14 15 -2)" fill="#c79a30"/>${pet(-64,.8)}${pet(64,.8)}${pet(-34,.95)}${pet(34,.95)}${pet(0,1.05)}<circle cx="0" cy="-5" r="2.6" fill="#fff3b0"/></g>`;
+const sc=`<g transform="translate(120 135) scale(.43) translate(-100 -100)" fill="url(#gg)" stroke="url(#gg)"><circle cx="100" cy="46" r="8"/><rect x="97" y="52" width="6" height="92" rx="2" stroke="none"/><rect x="74" y="142" width="52" height="9" rx="4.5" stroke="none"/><rect x="48" y="73" width="104" height="7" rx="3.5" stroke="none"/><circle cx="52" cy="76" r="5" stroke="none"/><circle cx="148" cy="76" r="5" stroke="none"/><path d="M52 76L30 122M52 76L74 122M148 76L126 122M148 76L170 122" fill="none" stroke-width="2.4"/><path d="M26 122H78A26 26 0 0 1 26 122ZM122 122H174A26 26 0 0 1 122 122Z" stroke="none"/></g>`;
+return `<svg viewBox="42 54 156 156"><defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe9a0"/><stop offset=".5" stop-color="#e0b84a"/><stop offset="1" stop-color="#9c7418"/></linearGradient><radialGradient id="gl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#1a7a5c" stop-opacity=".85"/><stop offset="1" stop-color="#04180f" stop-opacity="0"/></radialGradient><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity=".6"/></filter></defs><circle cx="120" cy="132" r="118" fill="url(#gl)"/><g filter="url(#sh)"><circle cx="120" cy="${cy}" r="64" fill="#082e22" stroke="url(#gg)" stroke-width="3.5"/><circle cx="120" cy="${cy}" r="58" fill="none" stroke="#e0b84a" stroke-opacity=".35"/><g transform="translate(120 166) scale(1.6) translate(-120 -70)" opacity=".16">${sh}</g>${st}<g transform="translate(240 0) scale(-1 1)">${st}</g>${sc}</g></svg>`})();
+const gm=id=>D.gone.find(g=>g.id==id),mname=id=>{const m=D.members.find(x=>x.id==id);return m?m.name:gm(id)?gm(id).name+' (মুছে ফেলা)':'—'},mopt=x=>D.members.concat(D.gone.filter(g=>x&&g.id==x.mid).map(g=>({...g,name:g.name+' (মুছে ফেলা)'}))).map(m=>[m.id,m.name+' ('+m.id+')']);
+const paid=m=>D.pays.filter(p=>p.mid==m.id).reduce((a,p)=>a+ +p.amt,0);
+const total=m=>+m.months?(+m.prem||0)*(+m.months):(+m.prem||0)*Math.max(0,mdiff(mstart(m),curM())+1);
+const sum=(a,k='amt')=>a.reduce((s,x)=>s+(+x[k]||0),0);
+const loanDue=l=>{if(+l.tot>0)return +l.tot;const t=(+l.inst||0)*(+l.n||0);return t>0?t:(+l.amt||0)},loanBal=l=>Math.max(0,loanDue(l)-(+l.ret||0));
+const loanBlock=(mid,adm)=>{const ls=D.loans.filter(l=>l.mid==mid);if(!ls.length)return'';return'<h2>'+(adm?'প্রতিটি লোনের বিস্তারিত':'লোনের হিসাব')+'</h2>'+ls.slice().reverse().map(l=>`<div class="stat" style="margin-bottom:10px"><small>লোন দেওয়ার তারিখ: ${l.date}${l.note?' • '+esc(l.note):''}</small><b>${tk(l.amt)}</b>${loanDue(l)>(+l.amt||0)?`<small>লভ্যাংশসহ মোট ফেরতযোগ্য ${tk(loanDue(l))} ${adm?`(লাভ ${tk(loanDue(l)-(+l.amt||0))})`:''}</small>`:''}${+l.inst&&+l.n?`<small>কিস্তি ${tk(l.inst)} × ${bd(l.n)} মাস</small>`:''}<small>ফেরত ${tk(l.ret)} • <span class="${loanBal(l)?'bad':'ok'}">বাকি ${tk(loanBal(l))}</span></small>${(l.log||[]).length?('<small>কিস্তি জমার তালিকা:</small>'+l.log.map((g,i)=>`<small style="display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px dashed var(--line);padding:3px 0"><span>${g.date}</span><b class="ok" style="margin-left:auto">${tk(g.amt)}</b>${adm?WAB('l:'+l.id+':'+i):''}</small>`).join('')):''}${adm?(loanBal(l)>0?`<button class="btn sm" data-lp2="${l.id}" style="margin-top:8px">+ কিস্তি জমা নিন</button>`:(isPaid(l)?`<div style="margin-top:8px">${PAID}</div>`:'')):''}</div>`).join('')};
+function loanPay(x,def){form('কিস্তি জমা — '+mname(x.mid)+' (বাকি '+tk(loanBal(x))+')',[{k:'amt',l:'কিস্তির টাকা',v:String(Math.min(+def||+x.inst||0,loanBal(x))||''),t:'number'},{k:'date',l:'তারিখ',v:today(),t:'date'}],v=>{if(!+v.amt){toast('টাকার পরিমাণ দিন');return false}if(+v.amt>loanBal(x)){toast('বাকি '+tk(loanBal(x))+'-এর চেয়ে বেশি দেওয়া যাবে না');return false}x.ret=String((+x.ret||0)+ +v.amt);(x.log=x.log||[]).push({date:v.date,amt:v.amt});notify('member',x.mid,'কিস্তি জমা হয়েছে','আপনার '+tk(v.amt)+' কিস্তি জমা নেওয়া হয়েছে। বাকি ঋণ '+tk(loanBal(x)))})}
+function loanSection(m){const ls=D.loans.filter(l=>l.mid==m.id);if(!ls.length)return'';const L=lsum(m.id);
+  return'<h2>ঋণের হিসাব</h2><div class="grid"><div class="stat"><small>মোট ঋণ</small><b>'+tk(L.amt)+'</b></div><div class="stat"><small>লভ্যাংশসহ লোনের টাকা</small><b>'+tk(L.tot)+'</b>'+(L.tot>L.amt?'<small>লাভ '+tk(L.tot-L.amt)+'</small>':'')+'</div><div class="stat"><small>মাসিক কিস্তি</small><b>'+tk(L.mon)+'</b></div><div class="stat"><small>বকেয়া কিস্তি</small><b class="'+(L.late?'bad':'ok')+'">'+tk(L.late)+'</b>'+(L.lateN?'<small>'+bd(L.lateN)+' মাসের</small>':'')+'</div><div class="stat"><small>পরিশোধ কিস্তি</small><b class="ok">'+tk(L.ret)+'</b><small>'+bd(L.paidN)+'/'+bd(L.totN)+' টি কিস্তি জমা হয়েছে</small></div><div class="stat"><small>বাকি ঋণ (লভ্যাংশসহ)</small><b class="'+(L.bal?'bad':'ok')+'">'+tk(L.bal)+'</b></div></div><h2>মাসিক কিস্তির হিসাব <small style="color:var(--mut);font-weight:400">(মাসে চাপ দিয়ে কিস্তি জমা নিন)</small></h2><div data-lt="1">'+tiles(L.rows,0,'কিস্তির কোনো মাস নির্ধারণ করা নেই')+'</div>'+loanBlock(m.id,1)}
+const PAID='<span class="pill" style="color:#38b072;border-color:#38b072">পরিশোধ ✓</span>',isPaid=l=>loanDue(l)>0&&loanBal(l)<=0;
+const invSum=()=>{const o={tot:0,cur:0,pf:0};D.inv.forEach(i=>{const a=+i.amt||0,r=+i.ret||0;o.tot+=a;o.cur+=Math.max(0,a-r);o.pf+=Math.max(0,r-a)});return{tot:Math.round(o.tot),cur:Math.round(o.cur),pf:Math.round(o.pf)}};
+const loanSplit=l=>{const a=+l.amt||0,d=loanDue(l),r=Math.min(+l.ret||0,d),p=Math.max(0,d-a);if(d<=a)return{a,p:0,pr:r,pe:0};const f=r/d;return{a,p,pr:a*f,pe:p*f}};
+const loanSum=()=>{const o=D.loans.reduce((o,l)=>{const x=loanSplit(l);o.tot+=x.a;o.cur+=x.a-x.pr;o.pf+=x.p;o.pfe+=x.pe;o.bal+=loanBal(l);return o},{tot:0,cur:0,pf:0,pfe:0,bal:0});Object.keys(o).forEach(k=>o[k]=Math.round(o[k]));return o};
+const stats=()=>{const col=sum(D.pays),inv=sum(D.inv),ret=sum(D.inv,'ret'),exp=sum(D.exp),lent=sum(D.loans),lret=sum(D.loans,'ret'),dv=sum(D.divs);return{col,inv,ret,exp,lent,lret,dv,lbal:D.loans.reduce((s,l)=>s+loanBal(l),0),cash:col+ret-inv-exp-lent+lret-dv,due:D.members.reduce((s,m)=>s+Math.max(0,total(m)-paid(m)),0)}};
+
+/* ===== মাসিক সঞ্চয় ===== */
+const MN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+const bd=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const mlabel=k=>k&&/^\d{4}-\d{2}$/.test(k)?MN[+k.slice(5)-1]+' '+bd(k.slice(0,4)):'—';
+const curM=()=>today().slice(0,7);
+const madd=(k,n)=>{const[y,m]=k.split('-').map(Number),t=y*12+m-1+n;return Math.floor(t/12)+'-'+String(t%12+1).padStart(2,'0')};
+const mopts=(a,b)=>{const r=[];for(let k=a;k<=b&&r.length<240;k=madd(k,1))r.push([k,mlabel(k)]);return r};
+const ORG='2025-01',RHI='2040-12';
+const RM=new URLSearchParams(location.search).has('report');let RAUTH=false;
+const mdiff=(a,b)=>(+b.slice(0,4)-+a.slice(0,4))*12+(+b.slice(5)-+a.slice(5));
+const mstart=m=>m.start||(m.join||today()).slice(0,7);
+const SL={paid:'জমা ✓',part:'আংশিক · বাকি',late:'বকেয়া',now:'চলতি · বাকি',soon:'আসন্ন',extra:'অতিরিক্ত'};
+const scls=s=>s=='paid'?'ok':s=='late'?'bad':s=='soon'||s=='extra'?'':'amb';
+function mrows(m){
+  const prem=+m.prem||0,st=mstart(m),cur=curM(),n=+m.months||Math.max(0,mdiff(st,cur))+12,end=madd(st,n),by={};let loose=0;
+  D.pays.filter(p=>p.mid==m.id).forEach(p=>{if(p.month)by[p.month]=(by[p.month]||0)+ +p.amt;else loose+= +p.amt});
+  const ks=new Set();for(let i=0;i<n&&i<600;i++)ks.add(madd(st,i));Object.keys(by).forEach(k=>ks.add(k));
+  const rows=[...ks].sort().map(k=>({k,due:(k>=st&&k<end)?prem:0,paid:by[k]||0}));
+  rows.forEach(r=>{if(r.due&&r.paid>r.due){loose+=r.paid-r.due;r.paid=r.due}});rows.forEach(r=>{if(loose>0&&r.paid<r.due){const x=Math.min(loose,r.due-r.paid);r.paid+=x;loose-=x}});
+  rows.forEach(r=>{r.rem=Math.max(0,r.due-r.paid);r.state=!r.due?'extra':r.paid>=r.due?'paid':r.paid>0?(r.k>cur?'part':'part'):r.k<cur?'late':r.k==cur?'now':'soon'});
+  return rows}
+function msum(m){
+  const rows=mrows(m),cur=curM(),c=rows.find(r=>r.k==cur),past=rows.filter(r=>r.k<cur&&r.rem>0),dueNow=rows.filter(r=>r.k<=cur).reduce((s,r)=>s+r.rem,0);
+  let t=c&&c.due?(c.state=='paid'?'চলতি মাস: জমা হয়েছে ✓':'চলতি মাস: বাকি '+tk(c.rem)):'চলতি মাসে কিস্তি নেই';
+  if(past.length)t+=' • বকেয়া '+bd(past.length)+' মাস';
+  return{rows,c,past,dueNow,nowTxt:t,paidN:rows.filter(r=>r.due&&r.state=='paid'&&(+m.months||r.k<=cur)).length,totN:rows.filter(r=>r.due&&(+m.months||r.k<=cur)).length}}
+const tiles=(rows,nl,em)=>rows.length?`<div class="mg">${rows.map(r=>`<div class="mt ${r.state}" data-k="${r.k}"><b>${MN[+r.k.slice(5)-1]}</b><small>${bd(r.k.slice(0,4))}</small><em>${tk(r.state=='paid'||r.state=='extra'?r.paid:r.rem)}</em><u>${SL[r.state]}</u></div>`).join('')}</div>${nl?'':`<div class="legend"><span><i style="background:#38b072"></i>জমা হয়েছে</span><span><i style="background:#e5b94c"></i>আংশিক</span><span><i style="background:#d9684f"></i>বকেয়া</span><span><i style="background:#2a6f58;border:1px solid #e0b84a"></i>চলতি মাস</span></div>`}`:'<div class="empty">'+(em||'কোনো মাসিক কিস্তি নির্ধারণ করা নেই')+'</div>';
+function monthCard(){const cur=curM();let due=0,got=0,n=0,k=0;
+  D.members.forEach(m=>{const r=mrows(m).find(r=>r.k==cur);if(r&&r.due){due+=r.due;got+=Math.min(r.paid,r.due);k++;if(r.state=='paid')n++}});
+  return`<div class="stat" data-go="monthly" style="margin-bottom:14px"><small>${mlabel(cur)} — চলতি মাসের সঞ্চয় (বিস্তারিত দেখতে চাপুন)</small><b>${tk(got)} <small style="display:inline">/ ${tk(due)}</small></b><div class="bar"><i style="width:${due?Math.min(100,got/due*100):0}%"></i></div><small>${bd(n)}/${bd(k)} জন জমা দিয়েছেন</small></div>`}
+function monthTable(){const o={},cur=curM();
+  D.members.forEach(m=>mrows(m).forEach(r=>{if(r.k>cur)return;const z=o[r.k]=o[r.k]||{due:0,got:0,rem:0};z.due+=r.due;z.got+=r.due?Math.min(r.paid,r.due):r.paid;z.rem+=r.rem}));
+  return`<table><tr><th>মাস</th><th>প্রত্যাশিত</th><th>জমা</th><th>বাকি</th></tr>${Object.keys(o).sort().map(k=>`<tr><td>${mlabel(k)}</td><td>${tk(o[k].due)}</td><td>${tk(o[k].got)}</td><td>${tk(o[k].rem)}</td></tr>`).join('')}</table>`}
+function memberForm(m){
+  const ed=!!m;m=m||{};const cur=curM(),st=m.start||(m.join?m.join.slice(0,7):cur);let lo=ORG,hi=madd(cur,12);if(st<lo)lo=st;if(st>hi)hi=st;
+  const nid=String(Math.max(0,...D.members.concat(D.gone).map(x=>+x.id||0))+1);
+  form(ed?'সদস্য সম্পাদনা':'নতুন সদস্য',[{k:'id',l:'সদস্য আইডি',v:m.id||nid},{k:'name',l:'নাম',v:m.name||''},{k:'phone',l:'মোবাইল',v:m.phone||'',t:'tel'},{k:'prem',l:'মাসিক সঞ্চয় (টাকা)',v:m.prem||'',t:'number'},{k:'start',l:'সঞ্চয় শুরুর মাস (হাতে লিখুন, যেমন: মার্চ ২০২৫)',v:mlabel(st),t:'text'},{k:'pw',l:'সদস্যের পাসওয়ার্ড',v:m.pw||''}],
+    v=>{if(!v.id){toast('সদস্য আইডি দিন');return false}
+      if(!v.name||!v.pw){toast('নাম ও পাসওয়ার্ড দিন');return false}
+      const sk=pm(v.start);if(!sk){toast('শুরুর মাস বুঝতে পারছি না, যেমন লিখুন: মার্চ ২০২৫');return false}v.start=sk;
+      if(D.members.concat(D.gone).some(x=>x!==m&&String(x.id)===v.id)){toast('এই আইডি আগে থেকেই আছে');return false}
+      if(ed){const old=m.id;Object.assign(m,v);if(String(old)!==v.id){D.pays.forEach(p=>{if(p.mid==old)p.mid=v.id});D.loans.forEach(p=>{if(p.mid==old)p.mid=v.id});D.divs.forEach(p=>{if(p.mid==old)p.mid=v.id});D.apps.forEach(a=>{if(a.mid==old)a.mid=v.id});if(S.mdid==old)S.mdid=v.id}}
+      else D.members.push({...v,join:today()})},
+    ed?()=>{D.gone.push({...m,deleted:today()});D.members=D.members.filter(x=>x!=m);S.tab='members'}:null,
+    box=>{const i=box.querySelector('#f_start');i.placeholder='যেমন: মার্চ ২০২৫';i.setAttribute('list','mlist2');i.autocomplete='off';const dq=document.createElement('datalist');dq.id='mlist2';dq.innerHTML=mopts(ORG,RHI).map(o=>`<option value="${o[1]}">`).join('');box.append(dq)})}
+const MALT=[['জানুয়ারি','জানুয়ারী','jan'],['ফেব্রুয়ারি','ফেব্রুয়ারী','feb'],['মার্চ','mar'],['এপ্রিল','apr'],['মে','may'],['জুন','jun'],['জুলাই','jul'],['আগস্ট','আগষ্ট','aug'],['সেপ্টেম্বর','sep'],['অক্টোবর','oct'],['নভেম্বর','nov'],['ডিসেম্বর','dec']];
+function pm(t){
+  t=String(t||'').replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d)).trim().toLowerCase();if(!t)return '';
+  let y,m,r;
+  if(r=t.match(/(\d{4})\D+(\d{1,2})(?!\d)/)){y=+r[1];m=+r[2]}
+  else if(r=t.match(/(\d{1,2})\D+(\d{4})/)){m=+r[1];y=+r[2]}
+  else{const i=MALT.findIndex(a=>a.some(n=>t.includes(n)));if(i<0)return '';m=i+1;r=t.match(/\d{4}/);y=r?+r[0]:+curM().slice(0,4)}
+  return m>=1&&m<=12&&y>=2000&&y<=2100?y+'-'+String(m).padStart(2,'0'):''}
+function payForm(x){
+  x=x||{};const ed=!!x.id,blank=ed&&!x.month,mem=id=>D.members.find(m=>m.id==id);
+  form(ed?'জমা সম্পাদনা':'নতুন জমা',[
+    {k:'mid',l:'সদস্য',v:x.mid||(D.members[0]||{}).id,o:mopt(x)},
+    {k:'month',l:'কোন মাসের সঞ্চয় (হাতে লিখুন)',v:'',t:'text'},
+    {k:'amt',l:'টাকা',v:x.amt||'',t:'number'},{k:'date',l:'তারিখ',v:x.date||today(),t:'date'},{k:'note',l:'মন্তব্য',v:x.note||''}],
+    v=>{if(!v.mid||!+v.amt){toast('সদস্য ও টাকার পরিমাণ দিন');return false}
+      const mk=pm(v.month);
+      if(v.month&&!mk){toast('মাস বুঝতে পারছি না, যেমন লিখুন: মার্চ ২০২৫');return false}
+      if(!mk&&!blank){toast('কোন মাসের সঞ্চয় তা লিখুন');return false}
+      v.month=mk;
+      if(ed)Object.assign(x,v);else{D.pays.push({id:uid(),...v});notify('member',v.mid,'সঞ্চয় জমা হয়েছে','আপনার '+tk(v.amt)+' জমা নেওয়া হয়েছে'+(v.month?' ('+mlabel(v.month)+' এর সঞ্চয়)':'')+'।')}},
+    ed?()=>{D.pays=D.pays.filter(y=>y!=x)}:null,
+    box=>{const sm=box.querySelector('#f_mid'),mo=box.querySelector('#f_month'),am=box.querySelector('#f_amt');let touched=!!x.amt||ed,pref=x.month||'';
+      mo.placeholder='যেমন: মার্চ ২০২৫';mo.setAttribute('list','mlist');mo.autocomplete='off';
+      const hint=document.createElement('small');hint.style.cssText='display:block;margin:-6px 0 10px 2px;min-height:18px';mo.after(hint);
+      const dl=document.createElement('datalist');dl.id='mlist';dl.innerHTML=mopts(ORG,RHI).map(o=>`<option value="${o[1]}">`).join('');box.append(dl);
+      const rowOf=k=>{const mm=mem(sm.value);return mm&&k?mrows(mm).find(r=>r.k==k):null};
+      const upd=()=>{const k=pm(mo.value),r=rowOf(k);
+        hint.style.color=mo.value.trim()&&!k?'var(--bad)':'var(--mut)';
+        hint.textContent=!mo.value.trim()?(blank?'মাস নির্দিষ্ট নেই':''):!k?'মাস বুঝতে পারছি না, যেমন লিখুন: মার্চ ২০২৫':'→ '+mlabel(k)+(r&&r.due?(r.state=='paid'?' — জমা ✓':' — বাকি '+tk(r.rem)):'')};
+      const sync=()=>{upd();if(touched)return;const r=rowOf(pm(mo.value));am.value=r&&r.rem?r.rem:''};
+      const fill=()=>{const mm=mem(sm.value),rows=mm?mrows(mm):[];let k;
+        if(pref)k=pref;else if(blank)k='';else{const u=rows.find(r=>r.rem>0);k=u?u.k:curM()}
+        mo.value=k?mlabel(k):'';sync()};
+      sm.onchange=()=>{pref='';fill()};mo.oninput=sync;am.oninput=()=>{touched=true};fill()})}
+
+function form(title,fields,cb,del,init){
+  const m=document.createElement('div');m.className='modal';
+  m.innerHTML=`<div class="sheet"><h3>${title}</h3>${fields.map(f=>`<label>${f.l}</label>`+(f.o?`<select id="f_${f.k}">${f.o.map(o=>`<option value="${o[0]}" ${o[0]==f.v?'selected':''}>${esc(o[1])}</option>`).join('')}</select>`:f.t=='area'?`<textarea id="f_${f.k}" rows="3">${esc(f.v)}</textarea>`:`<input id="f_${f.k}" type="${f.t||'text'}" ${f.t=='number'?'inputmode="numeric"':''} value="${esc(f.v)}">`)).join('')}
+  <button class="btn" id="ok">সংরক্ষণ করুন</button><div style="height:8px"></div>${del?'<button class="btn r" id="dl">মুছে ফেলুন</button><div style="height:8px"></div>':''}<button class="btn o" id="no">বাতিল</button></div>`;
+  document.body.append(m);
+  m.onclick=e=>{if(e.target==m)m.remove()};m.querySelector('#no').onclick=()=>m.remove();
+  m.querySelector('#ok').onclick=()=>{const v={};fields.forEach(f=>v[f.k]=m.querySelector('#f_'+f.k).value.trim());cb(v)!==false&&(m.remove(),save(),render(),toast('সংরক্ষিত হয়েছে'))};
+  if(del)m.querySelector('#dl').onclick=()=>{if(confirm('নিশ্চিতভাবে মুছবেন?')){del();m.remove();save();render()}};
+  if(init)init(m);
+}
+
+function render(){
+  if(RM)return reportPage();
+  if(!S.role){return A.innerHTML=`<div class="login">${LOGO}<h1>আল ইনসাফ</h1><p>বহুমুখী সংগঠন</p>
+  <div class="seg"><b id="r1" class="on">অ্যাডমিন</b><b id="r2">সদস্য</b></div>
+  <div id="idbox" style="display:none"><input id="mid" placeholder="সদস্য আইডি" inputmode="numeric"></div>
+  <input id="pw" type="password" placeholder="পাসওয়ার্ড"><button class="btn" id="in">প্রবেশ করুন</button></div>`,
+  (()=>{let r='admin';const sel=x=>{r=x;$('#r1').className=x=='admin'?'on':'';$('#r2').className=x=='admin'?'':'on';$('#idbox').style.display=x=='admin'?'none':'block'};
+  $('#r1').onclick=()=>sel('admin');$('#r2').onclick=()=>sel('member');
+  $('#in').onclick=()=>{const p=$('#pw').value;if(r=='admin'){p==D.adminPw?(go({role:'admin',tab:'home'}),pushEnable(false)):toast('পাসওয়ার্ড ভুল')}
+  else{const m=D.members.find(x=>x.id==$('#mid').value.trim()&&x.pw==p);m?(go({role:'member',me:m.id,tab:'mhome'}),pushEnable(false)):toast('আইডি বা পাসওয়ার্ড ভুল')}}})();}
+  A.innerHTML=`<div class="top">${LOGO}<h1>আল ইনসাফ বহুমুখী সংগঠন</h1><button id="nb" class="nb">🔔${unreadBadge()}</button><button id="out">বের হন</button></div><div class="wrap" id="v"></div>`+nav();
+  $('#out').onclick=()=>{pushOff();go({role:null,me:null})};
+  $('#nb').onclick=showNotifs;
+  document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>go({tab:a.dataset.t}));
+  const V=$('#v');(S.role=='admin'?adminView:memberView)(V);pushBar();
+}
+function nav(){const t=S.role=='admin'?[['home','📊','হিসাব'],['members','👥','সদস্য'],['monthly','📅','মাসিক সঞ্চয়'],['tx','💰','লেনদেন'],['more','⚙','সেটিংস']]:[['mhome','🏠','আমার হিসাব'],['mmonths','📅','মাসিক হিসাব'],['mapply','📝','আবেদন'],['mcontact','☎','যোগাযোগ']];
+  return`<nav><div>${t.map(x=>`<a data-t="${x[0]}" class="${S.tab==x[0]||(x[0]=='more'&&['report','apps'].includes(S.tab))||(x[0]=='members'&&S.tab=='mdetail')?'on':''}"><span>${x[1]}</span>${x[2]}</a>`).join('')}</div></nav>`}
+
+function adminView(V){
+  const s=stats(),mem=mname,iv=invSum(),ln=loanSum();
+  if(S.tab=='home')V.innerHTML=`<div class="hero"><small>বর্তমান ব্যালেন্স (নগদ তহবিল)</small><div class="big ${s.cash<0?'bad':''}">${tk(s.cash)}</div></div>
+  <details class="fold"><summary><span class="fi">🧮</span><div class="m"><b>ব্যালেন্সের হিসাব দেখুন</b><small>কোথা থেকে কত যোগ ও বিয়োগ হয়েছে</small></div></summary><div class="in"><div class="row"><div class="m"><b>মোট সঞ্চয় জমা</b></div><div class="a ok">+ ${tk(s.col)}</div></div><div class="row"><div class="m"><b>বিনিয়োগ থেকে ফেরত/লাভ</b></div><div class="a ok">+ ${tk(s.ret)}</div></div><div class="row"><div class="m"><b>লোনের কিস্তি ফেরত</b></div><div class="a ok">+ ${tk(s.lret)}</div></div><div class="row"><div class="m"><b>মোট বিনিয়োগ</b></div><div class="a bad">− ${tk(s.inv)}</div></div><div class="row"><div class="m"><b>মোট খরচ</b></div><div class="a bad">− ${tk(s.exp)}</div></div><div class="row"><div class="m"><b>সদস্যদের লোন দেওয়া</b></div><div class="a bad">− ${tk(s.lent)}</div></div><div class="row"><div class="m"><b>লভ্যাংশ বিতরণ</b></div><div class="a bad">− ${tk(s.dv)}</div></div><div class="row" style="border-color:var(--gold)"><div class="m"><b>= বর্তমান ব্যালেন্স</b></div><div class="a ${s.cash<0?'bad':'ok'}">${tk(s.cash)}</div></div></div></details>
+  ${monthCard()}
+  <div class="grid"><div class="stat"><small>মোট সদস্য</small><b>${bn(D.members.length)} জন</b></div><div class="stat"><small>মোট মূলধন (জমা)</small><b>${tk(s.col)}</b></div>
+  <div class="stat"><small>মোট খরচ</small><b class="bad">${tk(s.exp)}</b></div><div class="stat"><small>সদস্যদের বকেয়া</small><b class="bad">${tk(s.due)}</b></div></div>
+  <h2>বিনিয়োগ</h2><div class="grid"><div class="stat"><small>মোট বিনিয়োগ</small><b>${tk(iv.tot)}</b></div><div class="stat"><small>বর্তমান বিনিয়োগ</small><b class="amb">${tk(iv.cur)}</b><small>এখনো ফেরত আসেনি</small></div>
+  <div class="stat" style="grid-column:1/-1"><small>বিনিয়োগ থেকে লভ্যাংশ</small><b class="ok">${tk(iv.pf)}</b><small>মোট ফেরত ${tk(s.ret)}</small></div></div>
+  <h2>লোন</h2><div class="grid"><div class="stat"><small>মোট লোন</small><b>${tk(ln.tot)}</b><small>সদস্যদের দেওয়া আসল</small></div><div class="stat" data-go="tx"><small>বর্তমান লোন</small><b class="amb">${tk(ln.cur)}</b><small>লভ্যাংশসহ বাকি ${tk(ln.bal)}</small></div>
+  <div class="stat" style="grid-column:1/-1"><small>লোন থেকে লভ্যাংশ</small><b class="ok">${tk(ln.pf)}</b><small>আদায় হয়েছে ${tk(ln.pfe)} • বাকি ${tk(ln.pf-ln.pfe)}</small></div></div>
+  <div class="stat" style="margin-bottom:14px"><small>সদস্যদের দেওয়া মোট লভ্যাংশ (নগদ থেকে বাদ)</small><b class="bad">${tk(s.dv)}</b></div>
+  <h2>বিনিয়োগের খাত</h2>${Object.entries(D.inv.reduce((o,i)=>(o[i.sector]=(o[i.sector]||0)+ +i.amt,o),{})).map(([k,v])=>`<div class="row"><div class="m"><b>${esc(k)}</b><div class="bar"><i style="width:${Math.round(v/s.inv*100)}%"></i></div></div><div class="a">${tk(v)}</div></div>`).join('')||'<div class="empty">এখনো কোনো বিনিয়োগ নেই</div>'}
+  <h2>সর্বশেষ জমা</h2>${D.pays.slice(-4).reverse().map(p=>`<div class="row"><div class="m"><b>${esc(mem(p.mid))}</b><small>${p.date}</small></div><div class="a">${tk(p.amt)}</div></div>`).join('')||'<div class="empty">কোনো জমা নেই</div>'}`;
+  if(S.tab=='home')V.querySelectorAll('[data-go]').forEach(e=>e.onclick=()=>go({tab:e.dataset.go}));
+  if(S.tab=='members'){V.innerHTML=(D.members.map(m=>{const p=paid(m),t=total(m),q=msum(m);return`<div class="row" data-id="${m.id}" style="flex-wrap:wrap"><div class="m"><b>${esc(m.name)} <small>(আইডি ${m.id})</small></b><small>${esc(m.phone)} • মাসিক ${tk(m.prem)}</small><small style="display:block" class="${q.past.length?'bad':''}">${q.nowTxt}</small></div><div class="a ${t-p>0?'bad':'ok'}">বাকি ${tk(Math.max(0,t-p))}</div><div class="bar" style="width:100%"><i style="width:${t?Math.min(100,p/t*100):0}%"></i></div></div>`}).join('')||'<div class="empty">নতুন সদস্য যোগ করতে + চাপুন</div>')+'<button class="fab" id="add">+</button>';
+    $('#add').onclick=()=>memberForm();
+    V.querySelectorAll('.row').forEach(r=>r.onclick=()=>go({tab:'mdetail',mdid:r.dataset.id}))}
+  if(S.tab=='monthly'){
+    const all=D.members.map(m=>({m,rows:mrows(m)})),ks=new Set([curM()]);mopts(ORG,RHI).forEach(o=>ks.add(o[0]));all.forEach(a=>a.rows.forEach(r=>ks.add(r.k)));
+    const sk=[...ks].sort(),mk=S.mm&&ks.has(S.mm)?S.mm:curM();
+    const list=all.map(a=>({m:a.m,r:a.rows.find(r=>r.k==mk)})).filter(x=>x.r&&(x.r.due||x.r.paid)).sort((a,b)=>(b.r.rem>0)-(a.r.rem>0)||a.m.id-b.m.id);
+    const exp=list.reduce((s,x)=>s+x.r.due,0),got=list.reduce((s,x)=>s+Math.min(x.r.paid,x.r.due||x.r.paid),0),nOk=list.filter(x=>x.r.rem==0).length;
+    V.innerHTML=`<label>মাস নির্বাচন করুন</label><select id="mm">${sk.map(k=>`<option value="${k}" ${k==mk?'selected':''}>${mlabel(k)}</option>`).join('')}</select>
+    <div class="hero"><small>${mlabel(mk)} মাসের সঞ্চয়</small><div class="big">${tk(got)} <small>/ ${tk(exp)}</small></div><div class="bar"><i style="width:${exp?Math.min(100,got/exp*100):0}%"></i></div><small>জমা দিয়েছেন ${bd(nOk)} জন • বাকি ${bd(list.length-nOk)} জন • বাকি টাকা ${tk(Math.max(0,exp-got))}</small></div>`+
+    (list.map(x=>`<div class="row" data-id="${x.m.id}"><div class="m"><b>${esc(x.m.name)} <small>(আইডি ${x.m.id})</small></b><small>জমা ${tk(x.r.paid)} / ${tk(x.r.due)}</small></div><span class="pill ${scls(x.r.state)}">${SL[x.r.state]}</span>${x.r.rem>0?`<button class="btn sm" data-pay="${x.m.id}">জমা</button>`:''}</div>`).join('')||'<div class="empty">এই মাসে কোনো সদস্যের কিস্তি নেই</div>');
+    $('#mm').onchange=e=>go({mm:e.target.value});
+    V.querySelectorAll('.row').forEach(r=>r.onclick=()=>go({tab:'mdetail',mdid:r.dataset.id}));
+    V.querySelectorAll('[data-pay]').forEach(b=>b.onclick=e=>{e.stopPropagation();const x=list.find(y=>y.m.id==b.dataset.pay);payForm({mid:x.m.id,month:mk,amt:String(x.r.rem)})})}
+  if(S.tab=='mdetail'){const m=D.members.find(x=>x.id==S.mdid);if(!m)return go({tab:'members'});
+    const q=msum(m),p=paid(m),t=total(m),dv=sum(D.divs.filter(x=>x.mid==m.id));
+    V.innerHTML=`<button class="btn o sm" id="bk0" style="margin-bottom:14px">← সদস্য তালিকা</button>
+    <div class="hero"><small>সদস্য আইডি ${m.id} • ${esc(m.phone)}</small><div style="font-size:22px;font-weight:700">${esc(m.name)}</div><small>${q.nowTxt}</small><div class="bar"><i style="width:${t?Math.min(100,p/t*100):0}%"></i></div></div>
+    <div class="grid"><div class="stat"><small>মাসিক সঞ্চয়</small><b>${tk(m.prem)}</b></div><div class="stat"><small>সঞ্চয়ের সময়কাল</small><b style="font-size:15px">${mlabel(mstart(m))} থেকে ${+m.months?bd(+m.months)+' মাস':'অসীম'}</b></div>
+    <div class="stat"><small>এ পর্যন্ত বকেয়া সঞ্চয়</small><b class="${q.dueNow?'bad':'ok'}">${tk(q.dueNow)}</b></div><div class="stat"><small>জমা হওয়া মাস</small><b>${bd(q.paidN)}/${bd(q.totN)}</b></div>
+    <div class="stat"><small>মোট জমা (লভ্যাংশসহ)</small><b class="ok">${tk(p+dv)}</b></div><div class="stat"><small>মোট বাকি</small><b class="bad">${tk(Math.max(0,t-p))}</b></div><div class="stat" style="grid-column:1/-1"><small>লভ্যাংশ</small><b class="ok">${tk(dv)}</b></div></div>
+    <h2>মাসিক সঞ্চয়ের হিসাব <small style="color:var(--mut);font-weight:400">(মাসে চাপ দিয়ে জমা নিন)</small></h2>${tiles(q.rows)}
+    <div style="display:flex;gap:8px"><button class="btn" id="pay" style="flex:1;min-width:0">+ সঞ্চয় জমা নিন</button>${D.loans.some(l=>l.mid==m.id&&loanBal(l)>0)?'<button class="btn" id="kp" style="flex:1;min-width:0">+ কিস্তি জমা নিন</button>':(D.loans.some(l=>l.mid==m.id)?'<button class="btn o" disabled style="flex:1;min-width:0;opacity:.85">✓ কিস্তি পরিশোধ</button>':'')}</div><button class="btn" id="dvb">+ লভ্যাংশ যোগ করুন</button><button class="btn wa" id="wa">WhatsApp-এ বার্তা পাঠান</button><button class="btn o" id="ed">সদস্যের তথ্য সম্পাদনা</button>
+    ${loanSection(m)}
+    <h2>জমার তালিকা</h2>${D.pays.filter(x=>x.mid==m.id).slice().reverse().map(x=>`<div class="row" data-pid="${x.id}"><div class="m"><b>${x.month?mlabel(x.month)+' এর সঞ্চয়':'মাস নির্দিষ্ট নেই'}</b><small>${x.date}${x.note?' • '+esc(x.note):''}</small></div><div class="a">${tk(x.amt)}</div>${WAB('p:'+x.id)}</div>`).join('')||'<div class="empty">এখনো কোনো জমা নেই</div>'}${D.divs.some(x=>x.mid==m.id)?'<h2>লভ্যাংশের তালিকা</h2>'+D.divs.filter(x=>x.mid==m.id).slice().reverse().map(x=>`<div class="row" data-did="${x.id}"><div class="m"><b>লভ্যাংশ</b><small>${x.date}${x.note?' • '+esc(x.note):''}</small></div><div class="a">${tk(x.amt)}</div></div>`).join(''):''}`;
+    $('#bk0').onclick=()=>go({tab:'members'});
+    $('#pay').onclick=()=>payForm({mid:m.id});$('#dvb').onclick=()=>divForm({mid:m.id});
+    $('#ed').onclick=()=>memberForm(m);
+    $('#wa').onclick=()=>{if(!waNum(m.phone)){toast('সদস্যের মোবাইল নম্বর নেই');return}
+      const txt='আসসালামু আলাইকুম '+m.name+', আল ইনসাফ বহুমুখী সংগঠন থেকে জানাচ্ছি: '+(q.dueNow>0?'আপনার এ পর্যন্ত বকেয়া সঞ্চয় '+tk(q.dueNow)+'। অনুগ্রহ করে দ্রুত জমা দিন।':'আপনার সঞ্চয় হালনাগাদ আছে। জাযাকাল্লাহ।');
+      window.open(waLink(m.phone,txt),'_blank')};
+    const LL=lsum(m.id),lp=def=>{const a=D.loans.filter(l=>l.mid==m.id&&loanBal(l)>0).sort((x,y)=>x.date<y.date?-1:1);if(!a.length){toast('কোনো বাকি লোন নেই');return}if(a.length>1){toast('একাধিক লোন আছে — নিচের লোনের কার্ডে কিস্তি জমা চাপুন');return}loanPay(a[0],def)};
+    if($('#kp'))$('#kp').onclick=()=>lp();
+    V.querySelectorAll('[data-lt] .mt').forEach(e=>e.onclick=()=>{const r=LL.rows.find(r=>r.k==e.dataset.k);r&&r.rem>0?lp(r.rem):toast(mlabel(e.dataset.k)+': কিস্তি জমা হয়েছে ✓')});
+    V.querySelectorAll('[data-lp2]').forEach(b=>b.onclick=()=>loanPay(D.loans.find(y=>y.id==b.dataset.lp2)));
+    V.querySelectorAll('.mt:not([data-lt] .mt)').forEach(e=>e.onclick=()=>{const r=q.rows.find(r=>r.k==e.dataset.k);r.rem>0?payForm({mid:m.id,month:r.k,amt:String(r.rem)}):toast(mlabel(r.k)+': জমা হয়েছে ✓')});
+    V.querySelectorAll('[data-pid]').forEach(e=>e.onclick=()=>payForm(D.pays.find(y=>y.id==e.dataset.pid)));V.querySelectorAll('[data-did]').forEach(e=>e.onclick=()=>divForm(D.divs.find(y=>y.id==e.dataset.did)))}
+  if(S.tab=='tx'){const T={pays:'জমা',inv:'বিনিয়োগ',exp:'খরচ',loans:'লোন',divs:'লভ্যাংশ'},k=S.sub;
+    V.innerHTML=`<div class="tabs">${Object.entries(T).map(([a,b])=>`<a data-s="${a}" class="${k==a?'on':''}">${b}</a>`).join('')}</div>`+
+    (()=>{const rh=x=>`<div class="row" data-id="${x.id}"><div class="m"><b>${esc(k=='pays'?(x.month?mlabel(x.month)+' এর সঞ্চয়':'মাস নির্দিষ্ট নেই'):k=='inv'?x.sector:k=='loans'||k=='divs'?mem(x.mid):x.title)}</b><small>${x.date}${x.note?' • '+esc(x.note):''}${(k=='inv'||k=='loans')&&+x.ret?' • ফেরত '+tk(x.ret):''}${k=='loans'?(+x.inst&&+x.n?' • কিস্তি '+tk(x.inst)+' × '+bd(x.n)+' মাস':'')+(loanDue(x)>(+x.amt||0)?' • লভ্যাংশসহ '+tk(loanDue(x)):'')+' • বাকি '+tk(loanBal(x)):''}</small></div><div class="a ${k=='exp'?'bad':''}">${tk(x.amt)}</div>${k=='loans'?(isPaid(x)?PAID:`<button class="btn sm" data-lp="${x.id}">কিস্তি জমা</button>`):k=='pays'?WAB('p:'+x.id):''}</div>`;
+      if(k=='pays'){S.open=S.open||[];
+        return (D.members.concat(D.gone.map(g=>({...g,_g:1}))).map(m=>{const ps=D.pays.filter(x=>x.mid==m.id).slice().reverse();
+          return`<details class="fold" data-fid="${esc(m.id)}" ${S.open.includes(String(m.id))?'open':''}><summary><span class="fi">📁</span><div class="m"><b>${esc(m.name)}${m._g?' (মুছে ফেলা)':''} <small>(আইডি ${esc(m.id)})</small></b><small>${bd(ps.length)}টি লেনদেন</small></div><div class="a">${tk(sum(ps))}</div></summary><div class="in">${ps.map(rh).join('')||'<div class="empty" style="margin-bottom:10px">এই ফোল্ডারে এখনো কোনো লেনদেন নেই</div>'}</div></details>`}).join('')||'<div class="empty">কোনো সদস্য নেই। প্রথমে সদস্য যোগ করুন</div>')+'<button class="fab" id="add">+</button>'}
+      return (D[k].slice().reverse().map(rh).join('')||`<div class="empty">কোনো ${T[k]} নেই। + চাপুন</div>`)+'<button class="fab" id="add">+</button>'})();
+    V.querySelectorAll('details.fold').forEach(d=>d.ontoggle=()=>{const id=d.dataset.fid;S.open=(S.open||[]).filter(x=>x!=id);if(d.open)S.open.push(id);try{sessionStorage.setItem('s',JSON.stringify(S))}catch(e){}});
+    V.querySelectorAll('.tabs a').forEach(a=>a.onclick=()=>go({sub:a.dataset.s}));
+    V.querySelectorAll('[data-lp]').forEach(b=>b.onclick=e=>{e.stopPropagation();const x=D.loans.find(y=>y.id==b.dataset.lp);loanPay(x)});
+    const f=(x={})=>k=='loans'?[{k:'mid',l:'কোন সদস্যকে লোন দিয়েছেন',v:x.mid||(D.members[0]||{}).id,o:mopt(x)},{k:'amt',l:'লোনের টাকা',v:x.amt||'',t:'number'},{k:'tot',l:'লভ্যাংশসহ লোনের টাকা (মোট ফেরতযোগ্য)',v:x.tot||((+x.inst&&+x.n)?String(+x.inst*+x.n):''),t:'number'},{k:'inst',l:'কিস্তির পরিমাণ (টাকা)',v:x.inst||'',t:'number'},{k:'n',l:'কিস্তির মাস (কত মাসে শোধ)',v:x.n||'',t:'number'},{k:'start',l:'কিস্তি শুরুর মাস (যেমন: মার্চ ২০২৫ — ফাঁকা রাখলে লোন দেওয়ার পরের মাস)',v:x.start?mlabel(x.start):'',t:'text'},...(x.id?[{k:'ret',l:'এ পর্যন্ত ফেরত (টাকা)',v:x.ret||'0',t:'number'}]:[]),{k:'date',l:'লোন দেওয়ার তারিখ',v:x.date||today(),t:'date'},{k:'note',l:'মন্তব্য',v:x.note||''}]
+    :k=='inv'?[{k:'sector',l:'বিনিয়োগের খাত',v:x.sector||''},{k:'amt',l:'বিনিয়োগ (টাকা)',v:x.amt||'',t:'number'},{k:'ret',l:'ফেরত/লাভ (টাকা)',v:x.ret||'0',t:'number'},{k:'date',l:'তারিখ',v:x.date||today(),t:'date'},{k:'note',l:'মন্তব্য',v:x.note||''}]
+    :[{k:'title',l:'খরচের বিবরণ',v:x.title||''},{k:'amt',l:'টাকা',v:x.amt||'',t:'number'},{k:'date',l:'তারিখ',v:x.date||today(),t:'date'},{k:'note',l:'মন্তব্য',v:x.note||''}];
+    const chk=v=>{if(k=='loans'&&!v.mid){toast('আগে সদস্য যোগ করুন');return false}if(!+v.amt){toast('টাকার পরিমাণ দিন');return false}if(k=='loans'&&v.start){const sk=pm(v.start);if(!sk){toast('শুরুর মাস বুঝতে পারছি না, যেমন লিখুন: মার্চ ২০২৫');return false}v.start=sk}};
+    $('#add').onclick=()=>k=='pays'?payForm():k=='divs'?divForm():form('নতুন '+T[k],f(),v=>{if(chk(v)===false)return false;D[k].push({id:uid(),...v});if(k=='loans')notify('member',v.mid,'নতুন লোন','আপনাকে '+tk(v.amt)+' লোন দেওয়া হয়েছে।')},null,k=='loans'?loanInit:null);
+    V.querySelectorAll('.row').forEach(r=>r.onclick=()=>{const x=D[k].find(y=>y.id==r.dataset.id);if(k=='pays')return payForm(x);if(k=='divs')return divForm(x);form(T[k]+' সম্পাদনা',f(x),v=>{if(chk(v)===false)return false;Object.assign(x,v)},()=>D[k]=D[k].filter(y=>y!=x),k=='loans'?loanInit:null)})}
+  if(S.tab=='more')moreView(V);
+  if(S.tab=='report')reportView(V);
+  if(S.tab=='apps')V.innerHTML='<h2>সদস্যদের আবেদন</h2>'+(D.apps.slice().reverse().map(a=>`<div class="row" style="flex-wrap:wrap"><div class="m"><b>${esc(mem(a.mid))} — ${tk(a.amt)}</b><small>${a.date} • ${esc(a.reason)}</small></div><span class="pill ${a.status=='অনুমোদিত'?'ok':a.status=='বাতিল'?'bad':''}">${a.status}</span>${a.status=='অপেক্ষমাণ'?`<button class="btn sm" data-i="${a.id}" data-s="অনুমোদিত">অনুমোদন</button><button class="btn sm r" data-i="${a.id}" data-s="বাতিল">বাতিল</button>`:WAB('a:'+a.id)}</div>`).join('')||'<div class="empty">কোনো আবেদন নেই</div>')+'<br><button class="btn o" onclick="go({tab:\'more\'})">← পেছনে</button>',
+  V.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{const a=D.apps.find(a=>a.id==b.dataset.i);a.status=b.dataset.s;notify('member',a.mid,'আবেদনের ফলাফল','আপনার '+tk(a.amt)+'-এর আবেদন: '+a.status);save();render()});
+}
+function moreView(V){
+  const items=[['report','🖨','সম্পূর্ণ রিপোর্ট ও প্রিন্ট'],['apps','📝','সদস্যদের আবেদন ('+bn(D.apps.filter(a=>a.status=='অপেক্ষমাণ').length)+' নতুন)']];
+  V.innerHTML='<h2 style="margin-top:0">সেটিংস</h2>'+items.map(i=>`<div class="row" data-t="${i[0]}"><span style="font-size:22px">${i[1]}</span><div class="m"><b>${i[2]}</b></div></div>`).join('')+
+  `<div class="row" id="ad"><span style="font-size:22px">☎</span><div class="m"><b>অ্যাডমিনের নাম ও নম্বর</b><small>সদস্যরা এটি দেখবে</small></div></div>
+  <div class="row" id="pw"><span style="font-size:22px">🔑</span><div class="m"><b>অ্যাডমিন পাসওয়ার্ড পরিবর্তন</b></div></div>
+  <div class="row" id="bk"><span style="font-size:22px">💾</span><div class="m"><b>ব্যাকআপ ডাউনলোড</b><small>সব তথ্যের ফাইল সংরক্ষণ</small></div></div>
+  <div class="row" id="rs"><span style="font-size:22px">♻</span><div class="m"><b>ব্যাকআপ ফাইল থেকে ফেরত আনুন</b></div></div>`;
+  V.querySelectorAll('[data-t]').forEach(r=>r.onclick=()=>go({tab:r.dataset.t}));
+  $('#pw').onclick=()=>form('পাসওয়ার্ড পরিবর্তন',[{k:'p',l:'নতুন পাসওয়ার্ড',v:''}],v=>{if(v.p.length<4){toast('কমপক্ষে ৪ অক্ষর');return false}D.adminPw=v.p});
+  $('#ad').onclick=()=>form('অ্যাডমিন তালিকা (প্রতি লাইনে: নাম, নম্বর)',[{k:'t',l:'নাম, নম্বর',t:'area',v:D.admins.map(a=>a.name+', '+a.phone).join('\n')}],v=>{const R=[],bnd=t=>t.replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d));
+    v.t.split('\n').forEach(l=>{l=l.trim();if(!l)return;const m=bnd(l).match(/\+?\d[\d\s\-]{6,}\d/);let ph='',nm=l;
+      if(m){ph=m[0].replace(/[\s\-]/g,'');nm=(bnd(l).slice(0,m.index)+' '+bnd(l).slice(m.index+m[0].length));const i=l.indexOf(m[0]);nm=(i>=0?l.slice(0,i)+' '+l.slice(i+m[0].length):nm)}
+      nm=nm.replace(/^[\s,，\-–:]+|[\s,，\-–:]+$/g,'').replace(/\s{2,}/g,' ');
+      if(!nm&&ph){const q=R.slice().reverse().find(x=>!x.phone);if(q){q.phone=ph;return}nm='অ্যাডমিন'}
+      if(nm)R.push({name:nm,phone:ph})});
+    if(!R.length){toast('কমপক্ষে একজনের নাম দিন');return false}D.admins=R});
+  $('#bk').onclick=()=>dl('alinsaf-backup-'+today()+'.json',JSON.stringify(D),'application/json');
+  $('#rs').onclick=()=>{const i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=()=>{const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.members)throw 0;D=d;D.loans=D.loans||[];D.divs=D.divs||[];D.gone=D.gone||[];save();toast('ফেরত আনা হয়েছে');render()}catch(e){toast('ভুল ফাইল')}};r.readAsText(i.files[0])};i.click()};
+}
+function dl(n,t,m){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=n;a.click()}
+function reportHTML(){const s=stats();return`<h2 style="text-align:center">আল ইনসাফ বহুমুখী সংগঠন — হিসাব রিপোর্ট</h2><p style="text-align:center">তারিখ: ${today()}</p>
+<table><tr><th>বর্তমান ব্যালেন্স</th><td>${tk(s.cash)}</td><th>মোট জমা</th><td>${tk(s.col)}</td></tr><tr><th>বিনিয়োগ</th><td>${tk(s.inv)}</td><th>ফেরত/লাভ</th><td>${tk(s.ret)}</td></tr><tr><th>খরচ</th><td>${tk(s.exp)}</td><th>বকেয়া</th><td>${tk(s.due)}</td></tr><tr><th>লভ্যাংশ বিতরণ</th><td>${tk(s.dv)}</td><th>লোন বাকি</th><td>${tk(s.lbal)}</td></tr></table>
+<h2>সদস্য হিসাব</h2><table><tr><th>আইডি</th><th>নাম</th><th>মোট</th><th>জমা</th><th>বাকি</th><th>এ পর্যন্ত বকেয়া সঞ্চয়</th></tr>${D.members.map(m=>`<tr><td>${m.id}</td><td>${esc(m.name)}</td><td>${tk(total(m))}</td><td>${tk(paid(m))}</td><td>${tk(Math.max(0,total(m)-paid(m)))}</td><td>${tk(msum(m).dueNow)}</td></tr>`).join('')}</table>
+<h2>মাসভিত্তিক সঞ্চয়</h2>${monthTable()}
+<h2>বিনিয়োগ</h2><table><tr><th>খাত</th><th>তারিখ</th><th>বিনিয়োগ</th><th>ফেরত</th></tr>${D.inv.map(i=>`<tr><td>${esc(i.sector)}</td><td>${i.date}</td><td>${tk(i.amt)}</td><td>${tk(i.ret)}</td></tr>`).join('')}</table>
+<h2>খরচ</h2><table><tr><th>বিবরণ</th><th>তারিখ</th><th>টাকা</th></tr>${D.exp.map(e=>`<tr><td>${esc(e.title)}</td><td>${e.date}</td><td>${tk(e.amt)}</td></tr>`).join('')}</table>
+<h2>সদস্যদের লোন</h2><table><tr><th>সদস্য</th><th>তারিখ</th><th>লোন</th><th>লভ্যাংশসহ মোট</th><th>ফেরত</th><th>বাকি</th></tr>${D.loans.map(l=>`<tr><td>${esc(mname(l.mid))}</td><td>${l.date}</td><td>${tk(l.amt)}</td><td>${tk(loanDue(l))}</td><td>${tk(l.ret)}</td><td>${tk(loanBal(l))}</td></tr>`).join('')}</table>`}
+function repDoc(){return'<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>আল ইনসাফ — হিসাব রিপোর্ট</title><style>@page{size:A4;margin:12mm}*{box-sizing:border-box}body{font-family:"Noto Sans Bengali","Kalpurush","SolaimanLipi",system-ui,sans-serif;padding:14px;color:#000;background:#fff;font-size:14px;line-height:1.5}table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px}td,th{border:1px solid #888;padding:5px;text-align:left}th{background:#eee}h2{font-size:17px;margin:16px 0 8px}tr{page-break-inside:avoid}.pb{display:block;width:100%;padding:14px;font-size:17px;font-weight:700;background:#0a3024;color:#fff;border:0;border-radius:10px;margin-bottom:14px}@media print{.pb{display:none}body{padding:0}}</style></head><body><button class="pb" onclick="window.print()">🖨 প্রিন্ট করুন</button>'+reportHTML()+'</body></html>'}
+function printRep(){
+  try{const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0';document.body.append(f);
+    const d=f.contentWindow.document;d.open();d.write(repDoc());d.close();
+    setTimeout(()=>{try{f.contentWindow.focus();f.contentWindow.print()}catch(e){toast('প্রিন্ট চালু হয়নি — নিচের বোতামে Chrome-এ খুলুন')}setTimeout(()=>f.remove(),60000)},500)}
+  catch(e){toast('প্রিন্ট চালু হয়নি — নিচের বোতামে Chrome-এ খুলুন')}}
+function openRepBrowser(){
+  if(/^https?:/.test(location.protocol)){
+    const u=location.href.split('#')[0].split('?')[0]+'?report=1';
+    if(/android/i.test(navigator.userAgent)){
+      location.href='intent://'+u.replace(/^https?:\/\//,'')+'#Intent;scheme='+location.protocol.slice(0,-1)+';package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(u)+';end'}
+    else window.open(u,'_blank')}
+  else{const u=URL.createObjectURL(new Blob([repDoc()],{type:'text/html'}));const w=window.open(u,'_blank');if(!w)location.href=u}}
+function reportPage(){
+  document.body.style.background='#fff';
+  if(!RAUTH){A.innerHTML='<div class="rpw noprint" style="max-width:420px;margin-top:40px"><h2>আল ইনসাফ — রিপোর্ট</h2><p>রিপোর্ট দেখতে অ্যাডমিন পাসওয়ার্ড দিন</p><input id="rpw" type="password" placeholder="পাসওয়ার্ড"><button class="btn" id="rok">দেখুন</button></div>';
+    $('#rok').onclick=()=>{if($('#rpw').value==D.adminPw){RAUTH=true;render()}else toast('পাসওয়ার্ড ভুল')};return}
+  A.innerHTML=`<div class="rpw"><div class="noprint"><button class="btn" id="rp">🖨 প্রিন্ট / PDF সেভ করুন</button><button class="btn o" id="rd">⬇ HTML ফাইল ডাউনলোড</button></div>${reportHTML()}</div>`;
+  $('#rp').onclick=()=>window.print();
+  $('#rd').onclick=()=>dl('alinsaf-report-'+today()+'.html',repDoc(),'text/html')}
+function reportView(V){
+  V.innerHTML=`<div class="noprint"><button class="btn" id="w">🌐 Chrome / ব্রাউজারে রিপোর্ট খুলুন</button><p style="color:var(--mut);font-size:13px">বোতামে চাপলে রিপোর্ট ব্রাউজারে খুলবে (অ্যাডমিন পাসওয়ার্ড লাগবে)। সেখান থেকে প্রিন্ট বা PDF সেভ করতে পারবেন।</p><button class="btn o" id="p">🖨 এখান থেকেই প্রিন্ট করুন</button><button class="btn o" onclick="go({tab:'more'})">← পেছনে</button></div><div id="rep">${reportHTML()}</div>`;
+  $('#p').onclick=printRep;
+  $('#w').onclick=openRepBrowser;
+}
+
+function loanInit(box){const g=id=>box.querySelector('#f_'+id),amt=g('amt'),tot=g('tot'),inst=g('inst'),n=g('n');let src=tot.value?'tot':'inst';
+  const h=document.createElement('small');h.style.cssText='display:block;margin:-6px 0 10px 2px;min-height:18px;color:var(--mut)';tot.after(h);
+  const info=()=>{const A=+amt.value||0,T=+tot.value||0,N=+n.value||0,I=+inst.value||0;let t='';
+    if(T>0&&A>0)t=T>=A?'লাভ/লভ্যাংশ: '+tk(T-A):'⚠ লভ্যাংশসহ টাকা মূল লোনের চেয়ে কম';
+    if(T>0&&N>0&&I>0&&T!==I*N)t+=(t?' • ':'')+'শেষ কিস্তি '+tk(T-I*(N-1));h.textContent=t};
+  const calc=()=>{const N=+n.value||0;if(src=='tot'){const T=+tot.value||0;if(N>0&&T>0)inst.value=String(Math.floor(T/N))}else{const I=+inst.value||0;if(N>0&&I>0)tot.value=String(I*N)}info()};
+  tot.oninput=()=>{src='tot';calc()};inst.oninput=()=>{src='inst';calc()};n.oninput=calc;amt.oninput=info;info()}
+const lstart=l=>l.start||madd((l.date||today()).slice(0,7),1);
+function lrows(l){const inst=+l.inst||0,n=+l.n||0;if(!inst||!n)return[];let left=+l.ret||0;const st=lstart(l),r=[];
+  for(let i=0;i<n&&i<600;i++){const dd=(i==n-1&&+l.tot>0)?Math.max(0,loanDue(l)-inst*(n-1)):inst,x=Math.min(left,dd);left-=x;r.push({k:madd(st,i),due:dd,paid:x})}return r}
+function lmrows(mid){const o={},cur=curM();
+  D.loans.filter(l=>l.mid==mid).forEach(l=>lrows(l).forEach(r=>{const z=o[r.k]=o[r.k]||{k:r.k,due:0,paid:0};z.due+=r.due;z.paid+=r.paid}));
+  return Object.values(o).sort((a,b)=>a.k<b.k?-1:1).map(r=>{r.rem=r.due-r.paid;r.state=r.paid>=r.due?'paid':r.paid>0?'part':r.k<cur?'late':r.k==cur?'now':'soon';return r})}
+function lsum(mid){const ls=D.loans.filter(l=>l.mid==mid),rows=lmrows(mid),cur=curM(),due=rows.filter(r=>r.k<=cur);
+  return{rows,amt:sum(ls),tot:ls.reduce((a,l)=>a+loanDue(l),0),ret:sum(ls,'ret'),bal:ls.reduce((a,l)=>a+loanBal(l),0),mon:ls.filter(l=>loanBal(l)>0).reduce((a,l)=>a+(+l.inst||0),0),late:due.reduce((a,r)=>a+r.rem,0),lateN:due.filter(r=>r.rem>0).length,paidN:rows.filter(r=>r.state=='paid').length,totN:rows.length}}
+function divForm(x){x=x||{};const ed=!!x.id;
+  form(ed?'লভ্যাংশ সম্পাদনা':'নতুন লভ্যাংশ',[{k:'mid',l:'কোন সদস্যের লভ্যাংশ',v:x.mid||(D.members[0]||{}).id,o:mopt(x)},{k:'amt',l:'লভ্যাংশ (টাকা)',v:x.amt||'',t:'number'},{k:'date',l:'তারিখ',v:x.date||today(),t:'date'},{k:'note',l:'মন্তব্য',v:x.note||''}],
+    v=>{if(!v.mid){toast('আগে সদস্য যোগ করুন');return false}if(!+v.amt){toast('টাকার পরিমাণ দিন');return false}if(ed)Object.assign(x,v);else{D.divs.push({id:uid(),...v});notify('member',v.mid,'লভ্যাংশ যোগ হয়েছে','আপনার হিসাবে '+tk(v.amt)+' লভ্যাংশ যোগ করা হয়েছে।')}},
+    ed?()=>{D.divs=D.divs.filter(y=>y!=x)}:null)}
+function memberView(V){
+  const m=D.members.find(x=>x.id==S.me);if(!m)return go({role:null});
+  const p=paid(m),t=total(m),b=Math.max(0,t-p),dv=sum(D.divs.filter(x=>x.mid==m.id));
+  if(S.tab=='mhome'){const q=msum(m),c=q.c,L=lsum(m.id),cu=curM(),w0=madd(cu,-4),w=r=>r.k>=w0&&r.k<=cu,dl=D.divs.filter(x=>x.mid==m.id).sort((a,b)=>a.date<b.date?1:-1)[0];
+    V.innerHTML=`<div class="hero"><small>স্বাগতম</small><div style="font-size:22px;font-weight:700">${esc(m.name)}</div><small>সদস্য আইডি ${m.id}</small><div class="bar"><i style="width:${t?Math.min(100,p/t*100):0}%"></i></div></div>
+  <div class="stat" style="margin-bottom:14px"><small>${mlabel(curM())} মাসের সঞ্চয়</small>${c&&c.due?`<b style="font-size:24px">${tk(c.due)}</b> <span class="pill ${scls(c.state)}">${SL[c.state]}</span>${c.paid&&c.state!='paid'?`<small>জমা ${tk(c.paid)} • বাকি ${tk(c.rem)}</small>`:''}`:'<b>এই মাসে কিস্তি নেই</b>'}</div>
+  <div class="grid"><div class="stat"><small>মোট সঞ্চয়</small><b>${tk(t)}</b></div><div class="stat"><small>মোট জমা (লভ্যাংশসহ)</small><b class="ok">${tk(p+dv)}</b></div>
+  <div class="stat"><small>বাকি সঞ্চয়</small><b class="bad">${tk(b)}</b></div><div class="stat"><small>লভ্যাংশ</small><b class="ok">${tk(dv)}</b>${dl?`<small>সর্বশেষ: ${dl.date}</small>`:''}</div>
+  <div class="stat"><small>মাসিক সঞ্চয়</small><b>${tk(m.prem)}</b></div><div class="stat"><small>এ পর্যন্ত বকেয়া সঞ্চয়</small><b class="${q.dueNow?'bad':'ok'}">${tk(q.dueNow)}</b></div>
+  <div class="stat" style="grid-column:1/-1"><small>জমা হওয়া মাস</small><b>${bd(q.paidN)}/${bd(q.totN)}</b></div></div>
+  <h2>ঋণের হিসাব</h2>
+  <div class="grid"><div class="stat"><small>মোট ঋণ</small><b>${tk(L.amt)}</b></div><div class="stat"><small>লভ্যাংশসহ লোনের টাকা</small><b>${tk(L.tot)}</b></div>
+  <div class="stat"><small>মাসিক কিস্তি</small><b>${tk(L.mon)}</b></div><div class="stat"><small>বকেয়া কিস্তি</small><b class="${L.late?'bad':'ok'}">${tk(L.late)}</b>${L.lateN?`<small>${bd(L.lateN)} মাসের</small>`:''}</div>
+  <div class="stat"><small>পরিশোধ কিস্তি</small><b class="ok">${tk(L.ret)}</b><small>${bd(L.paidN)}/${bd(L.totN)} টি কিস্তি জমা হয়েছে</small></div><div class="stat"><small>বাকি ঋণ (লভ্যাংশসহ)</small><b class="${L.bal?'bad':'ok'}">${tk(L.bal)}</b></div></div>
+  <h2>মাসিক সঞ্চয়ের হিসাব <small style="color:var(--mut);font-weight:400">(সর্বশেষ ৫ মাস)</small></h2>${tiles(q.rows.filter(w),0,'গত ৫ মাসে কোনো সঞ্চয়ের কিস্তি নেই')}
+  <h2>মাসিক কিস্তির হিসাব <small style="color:var(--mut);font-weight:400">(সর্বশেষ ৫ মাস)</small></h2>${tiles(L.rows.filter(w),1,'গত ৫ মাসে কোনো ঋণের কিস্তি নেই')}
+  <button class="btn o" id="allm">সব মাসের হিসাব দেখুন</button>${loanBlock(m.id)}`;
+  $('#allm').onclick=()=>go({tab:'mmonths'})}
+  if(S.tab=='mmonths'){const q=msum(m),L=lsum(m.id);V.innerHTML='<h2 style="margin-top:0">মাসিক সঞ্চয়ের হিসাব</h2>'+tiles(q.rows)+'<h2>মাসিক কিস্তির হিসাব</h2>'+tiles(L.rows,0,'কোনো ঋণ বা কিস্তি নেই')}
+  if(S.tab=='mapply'){V.innerHTML=D.apps.filter(a=>a.mid==m.id).reverse().map(a=>`<div class="row"><div class="m"><b>${tk(a.amt)}</b><small>${a.date} • ${esc(a.reason)}</small></div><span class="pill">${a.status}</span></div>`).join('')+'<button class="fab" id="add">+</button>'||'';
+    if(!D.apps.some(a=>a.mid==m.id))V.insertAdjacentHTML('afterbegin','<div class="empty">কোনো আবেদন নেই। নতুন আবেদনের জন্য + চাপুন</div>');
+    $('#add').onclick=()=>form('নতুন আবেদন',[{k:'amt',l:'টাকার পরিমাণ',t:'number',v:''},{k:'reason',l:'কারণ',t:'area',v:''}],v=>{if(!+v.amt){toast('টাকার পরিমাণ দিন');return false}D.apps.push({id:uid(),mid:m.id,...v,date:today(),status:'অপেক্ষমাণ'});notify('admin','','নতুন আবেদন',m.name+' '+tk(v.amt)+'-এর আবেদন করেছেন।')})}
+  if(S.tab=='mcontact')V.innerHTML='<h2>সংগঠনের অ্যাডমিন</h2>'+D.admins.map(a=>`<div class="row"><div class="m"><b>${esc(a.name)}</b><small>${esc(a.phone)}</small></div><button class="btn sm" data-tel="${esc(a.phone)}">📞 কল</button></div>`).join('');
+  V.querySelectorAll('[data-tel]').forEach(b=>b.onclick=()=>{const n=b.dataset.tel.trim();if(!n){toast('নম্বর দেওয়া নেই');return}
+    const done=()=>toast('নম্বর কপি হয়েছে');
+    try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(n).then(done,()=>{})
+      else{const t=document.createElement('textarea');t.value=n;document.body.append(t);t.select();document.execCommand('copy');t.remove();done()}}catch(e){}
+    setTimeout(()=>{location.href='tel:'+n.replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d)).replace(/[^\d+]/g,'')},350)})
+}
+/* ===== পুশ নোটিফিকেশন ===== */
+const PUSH_URL='https://script.google.com/macros/s/AKfycbwF7mF6wCOWgs467uvmEh28ni3plg_DrnTVMcvT3UCPxIRyPkB3slSNOvCyxrek26doLQ/exec';/* Apps Script Web app URL এখানে বসান */
+const VAPID='BADC1WmdQGk008A-tRjYzOVYU6X9ejJLBgWUINKAq9Ip6L2GXXYpiQW8MgKef_YRVeoRcboqaCpuAF7Y__7VMPI';/* ঐচ্ছিক: Firebase Console > Project settings > Cloud Messaging > Web Push certificates-এর Key pair */
+let pushToken='',pushSynced='',pushMsgOn=false;
+const pushSupported=()=>{try{return !!ref&&window.isSecureContext&&'Notification' in window&&'serviceWorker' in navigator&&'PushManager' in window&&typeof firebase!=='undefined'&&typeof firebase.messaging==='function'}catch(e){return false}};
+function notify(to,mid,title,body){
+  try{const n={id:uid(),to,mid:String(mid==null?'':mid),title,body,ts:Date.now()};D.notifs=(D.notifs||[]).concat(n).filter(x=>x.ts>Date.now()-60*864e5).slice(-300)}catch(e){}
+  try{if(ref)ref.firestore.collection('alinsaf_notify').add({to,mid:String(mid==null?'':mid),title,body,ts:Date.now()}).then(()=>{try{if(PUSH_URL)fetch(PUSH_URL,{mode:'no-cors'}).catch(()=>{})}catch(e){}}).catch(()=>{})}catch(e){}}
+const nKey=()=>'alinsaf_seen_'+(S.role=='admin'?'admin':'m'+S.me);
+const myNotifs=()=>(D.notifs||[]).filter(n=>S.role=='admin'?n.to=='admin':(n.to=='member'&&String(n.mid)===String(S.me))).sort((a,b)=>b.ts-a.ts);
+const nSeen=()=>{try{return +localStorage.getItem(nKey())||0}catch(e){return 0}};
+const unreadBadge=()=>{const c=myNotifs().filter(n=>n.ts>nSeen()).length;return c?'<span class="nbd">'+(c>99?'৯৯+':bd(c))+'</span>':''};
+const ndate=ts=>{const d=new Date(ts),p=x=>String(x).padStart(2,'0');return bd(d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes()))};
+function showNotifs(){
+  const list=myNotifs(),seen=nSeen(),m=document.createElement('div');m.className='modal';
+  m.innerHTML='<div class="sheet"><h3>🔔 নোটিফিকেশন</h3>'+(list.length?list.map(n=>'<div class="row" style="align-items:flex-start;'+(n.ts>seen?'border-color:var(--gold)':'')+'"><div class="m"><b style="white-space:normal">'+esc(n.title)+(n.ts>seen?' <span class="pill amb">নতুন</span>':'')+'</b><small style="display:block">'+esc(n.body)+'</small><small>'+ndate(n.ts)+'</small></div></div>').join(''):'<div class="empty">কোনো নোটিফিকেশন নেই</div>')+'<button class="btn o" id="nc" style="margin-top:6px">বন্ধ করুন</button></div>';
+  document.body.append(m);
+  m.onclick=e=>{if(e.target==m)m.remove()};m.querySelector('#nc').onclick=()=>m.remove();
+  try{localStorage.setItem(nKey(),String(Date.now()))}catch(e){}
+  const b=$('#nb');if(b)b.innerHTML='🔔'}
+async function pushEnable(manual){
+  if(!pushSupported()||!S.role){if(manual)toast('এই ডিভাইসে নোটিফিকেশন চালু করা যাবে না');return}
+  try{
+    if(Notification.permission=='denied'){if(manual)toast('ব্রাউজারের সেটিংস থেকে নোটিফিকেশনের অনুমতি দিন');return}
+    if(Notification.permission!='granted'){const p=await Notification.requestPermission();if(p!='granted'){if(manual)toast('নোটিফিকেশনের অনুমতি দেওয়া হয়নি');return}}
+    const reg=await navigator.serviceWorker.register('firebase-messaging-sw.js'),msg=firebase.messaging(),opt={serviceWorkerRegistration:reg};
+    if(VAPID)opt.vapidKey=VAPID;
+    const token=await msg.getToken(opt);
+    if(!token){if(manual)toast('নোটিফিকেশন টোকেন পাওয়া যায়নি');return}
+    if(!S.role)return;
+    const role=S.role,mid=role=='member'?String(S.me):'',col=ref.firestore.collection('alinsaf_tokens');
+    if(pushToken&&pushToken!==token)col.doc(pushToken).delete().catch(()=>{});
+    pushToken=token;
+    if(!pushMsgOn){pushMsgOn=true;msg.onMessage(p=>{const d=p.data||{},t=d.title||'আল ইনসাফ';try{reg.showNotification(t,{body:d.body||'',tag:d.tag||'alinsaf',icon:'icon-192.png',badge:'icon-192.png',data:{url:'./'}})}catch(e){toast(t+(d.body?': '+d.body:''))}})}
+    await col.doc(token).set({token,role,mid,ts:Date.now()});
+    if(manual)toast('নোটিফিকেশন চালু হয়েছে');
+  }catch(e){if(manual)toast('নোটিফিকেশন চালু করা যায়নি');try{console.warn('push',e)}catch(_){}}
+}
+function pushOff(){try{const t=pushToken;pushToken='';pushSynced='';if(t&&ref)ref.firestore.collection('alinsaf_tokens').doc(t).delete().catch(()=>{})}catch(e){}}
+function pushBar(){/* বার নেই: লগইনের সময়ই অনুমতি চাওয়া হয়, অনুমতি দেওয়া থাকলে এখানে টোকেন হালনাগাদ হয় */
+  const V=$('#v');if(!V||!V.isConnected||!S.role||!pushSupported())return;
+  if(Notification.permission=='granted'){const key=S.role+':'+(S.me||'');if(pushSynced!==key){pushSynced=key;pushEnable(false)}return}
+}
+/* লেখার সময় ডাটা হালনাগাদ হলে পেজ রিফ্রেশ করে লেখা মুছবে না */
+function busyTyping(){try{const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))return true;if(!S.role){return [].some.call(A.querySelectorAll('input,textarea'),x=>x.value&&x.type!=='hidden')}}catch(e){}return false}
+function startSync(){
+  if(!ref){render();return}
+  A.innerHTML='<div class="login"><p>লোড হচ্ছে...</p></div>';
+  const t=setTimeout(()=>{if(!ready){ready=true;render()}},4000);
+  ref.onSnapshot(s=>{
+    if(s.metadata.hasPendingWrites&&ready)return;
+    if(s.exists){const d=s.data();if(d&&d.members){D=d;['admins','pays','inv','exp','apps','loans','divs','gone'].forEach(k=>D[k]=D[k]||[]);try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}}
+    else if(!s.metadata.fromCache)save();
+    if(!ready){ready=true;clearTimeout(t);render()}else if(!document.querySelector('.modal')&&!busyTyping())render();
+  },()=>{if(!ready){ready=true;render()}});
+}
+startSync();
+</script></body></html>
