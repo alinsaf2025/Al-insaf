@@ -152,8 +152,8 @@ function loanSection(m){const ls=D.loans.filter(l=>l.mid==m.id);if(!ls.length)re
 const PAID='<span class="pill" style="color:#38b072;border-color:#38b072">পরিশোধ ✓</span>',isPaid=l=>loanDue(l)>0&&loanBal(l)<=0;
 const invSum=()=>{const o={tot:0,cur:0,pf:0};D.inv.forEach(i=>{const a=+i.amt||0,r=+i.ret||0;o.tot+=a;o.cur+=Math.max(0,a-r);o.pf+=Math.max(0,r-a)});return{tot:Math.round(o.tot),cur:Math.round(o.cur),pf:Math.round(o.pf)}};
 const loanSplit=l=>{const a=+l.amt||0,d=loanDue(l),r=Math.min(+l.ret||0,d),p=Math.max(0,d-a);if(d<=a)return{a,p:0,pr:r,pe:0};const f=r/d;return{a,p,pr:a*f,pe:p*f}};
-const loanSum=()=>{const o=D.loans.reduce((o,l)=>{const x=loanSplit(l);o.tot+=x.a;o.cur+=x.a-x.pr;o.pf+=x.p;o.pfe+=x.pe;o.bal+=loanBal(l);return o},{tot:0,cur:0,pf:0,pfe:0,bal:0});Object.keys(o).forEach(k=>o[k]=Math.round(o[k]));return o};
-const stats=()=>{const col=sum(D.pays),inv=sum(D.inv),ret=sum(D.inv,'ret'),exp=sum(D.exp),lent=sum(D.loans),lret=sum(D.loans,'ret'),dv=sum(D.divs);return{col,inv,ret,exp,lent,lret,dv,lbal:D.loans.reduce((s,l)=>s+loanBal(l),0),cash:col+ret-inv-exp-lent+lret-dv,due:D.members.reduce((s,m)=>s+Math.max(0,total(m)-paid(m)),0)}};
+const loanSum=()=>{const o=D.loans.reduce((o,l)=>{const x=loanSplit(l);o.tot+=x.a;o.cur+=x.a-x.pr;o.pf+=x.p;o.pfe+=x.pe;o.bal+=loanBal(l);return o},{tot:0,cur:0,pf:0,pfe:0,bal:0});Object.keys(o).forEach(k=>o[k]=Math.round(o[k]));o.pfr=o.bal-o.cur;o.pfe=o.pf-o.pfr;return o};
+const stats=()=>{const col=sum(D.pays),inv=sum(D.inv),ret=sum(D.inv,'ret'),exp=sum(D.exp),lent=sum(D.loans),lret=sum(D.loans,'ret'),dv=sum(D.divs);return{col,inv,ret,exp,lent,lret,dv,lbal:D.loans.reduce((s,l)=>s+loanBal(l),0),cash:col+ret-inv-exp-lent+lret-dv,due:D.members.reduce((s,m)=>s+msum(m).dueNow,0)}};
 
 /* ===== মাসিক সঞ্চয় ===== */
 const MN=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
@@ -274,8 +274,8 @@ function adminView(V){
   <div class="stat"><small>মোট খরচ</small><b class="bad">${tk(s.exp)}</b></div><div class="stat"><small>সদস্যদের বকেয়া</small><b class="bad">${tk(s.due)}</b></div></div>
   <h2>বিনিয়োগ</h2><div class="grid"><div class="stat"><small>মোট বিনিয়োগ</small><b>${tk(iv.tot)}</b></div><div class="stat"><small>বর্তমান বিনিয়োগ</small><b class="amb">${tk(iv.cur)}</b><small>এখনো ফেরত আসেনি</small></div>
   <div class="stat" style="grid-column:1/-1"><small>বিনিয়োগ থেকে লভ্যাংশ</small><b class="ok">${tk(iv.pf)}</b><small>মোট ফেরত ${tk(s.ret)}</small></div></div>
-  <h2>লোন</h2><div class="grid"><div class="stat"><small>মোট লোন</small><b>${tk(ln.tot)}</b><small>সদস্যদের দেওয়া আসল</small></div><div class="stat" data-go="tx"><small>বর্তমান লোন</small><b class="amb">${tk(ln.cur)}</b><small>লভ্যাংশসহ বাকি ${tk(ln.bal)}</small></div>
-  <div class="stat" style="grid-column:1/-1"><small>লোন থেকে লভ্যাংশ</small><b class="ok">${tk(ln.pf)}</b><small>আদায় হয়েছে ${tk(ln.pfe)} • বাকি ${tk(ln.pf-ln.pfe)}</small></div></div>
+  <h2>লোন</h2><div class="grid"><div class="stat"><small>মোট লোন</small><b>${tk(ln.tot)}</b><small>সদস্যদের দেওয়া আসল</small></div><div class="stat" data-go="tx"><small>বর্তমান লোন (লভ্যাংশসহ বাকি)</small><b class="amb">${tk(ln.bal)}</b><small>আসল ${tk(ln.cur)} + লভ্যাংশ ${tk(ln.pfr)}</small></div>
+  <div class="stat" style="grid-column:1/-1"><small>লোন থেকে লভ্যাংশ</small><b class="ok">${tk(ln.pf)}</b><small>আদায় হয়েছে ${tk(ln.pfe)} • বাকি ${tk(ln.pfr)}</small></div></div>
   <div class="stat" style="margin-bottom:14px"><small>সদস্যদের দেওয়া মোট লভ্যাংশ (নগদ থেকে বাদ)</small><b class="bad">${tk(s.dv)}</b></div>
   <h2>বিনিয়োগের খাত</h2>${Object.entries(D.inv.reduce((o,i)=>(o[i.sector]=(o[i.sector]||0)+ +i.amt,o),{})).map(([k,v])=>`<div class="row"><div class="m"><b>${esc(k)}</b><div class="bar"><i style="width:${Math.round(v/s.inv*100)}%"></i></div></div><div class="a">${tk(v)}</div></div>`).join('')||'<div class="empty">এখনো কোনো বিনিয়োগ নেই</div>'}
   <h2>সর্বশেষ জমা</h2>${D.pays.slice(-4).reverse().map(p=>`<div class="row"><div class="m"><b>${esc(mem(p.mid))}</b><small>${p.date}</small></div><div class="a">${tk(p.amt)}</div></div>`).join('')||'<div class="empty">কোনো জমা নেই</div>'}`;
